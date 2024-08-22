@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Hotel.BLL.DTO.Responses.RoomIndexModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row">
+    @foreach (var room in Model)
+    {
+        <div class="col-sm-6 mb-3 mb-sm-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">@room.Title</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Cmimi: @room.Price.ToString("C")</p>
+                    <p class="card-text">Targa: @room.Description</p>
+                    <img class="card-img-top" src="~/images/@room.ImagePath" alt="@room.Title Image" />
+
+                </div>
+            </div>
+        </div>
+           
+    }
+    
+</div>

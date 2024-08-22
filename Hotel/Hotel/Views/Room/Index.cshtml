@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Hotel.BLL.DTO.Responses.RoomIndexModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+<div style="margin-bottom: 2rem; display: flex; align-items: center; font-family: 'Georgia',serif;">
+    <span class="h1">Makinat</span>
+    <a asp-action="Create" class="btn btn-custom" style="margin-left: 1rem;font-family: 'Georgia', serif;">+</a>
+</div>
+<div class="row">
+    @foreach (var room in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Emri: @room.Title</h5>
+                    <p class="card-text">Cmimi: @room.Price.ToString("C")</p>
+                    <p class="card-text">Targa: @room.Description</p>
+                    <p class="card-text">Kapaciteti: @room.Capacity</p>
+                    <img class="card-img-top" src="~/images/@room.ImagePath" alt="@room.Title Image" />
+              
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

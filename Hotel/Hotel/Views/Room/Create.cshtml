@@ -1,0 +1,68 @@
+﻿@model Hotel.BLL.DTO.Requests.RoomAddModel
+@{
+    ViewData["Title"] = "Create";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<h1>Shtoni Makinat</h1>
+
+<form enctype="multipart/form-data" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Title">Makina</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Capacity">Kapaciteti</label>
+        <input asp-for="Capacity" class="form-control" />
+        <span asp-validation-for="Capacity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Targa</label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Cmimi</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Image" class="control-label"></label>
+            <div class="custom-file">
+                <input asp-for="Image" class="custom-file-input" id="customFile" onchange="ImgPre(this)">
+            </div>
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        <div style="height: 100px; width: 100px;margin-bottom: 2rem">
+            <img id="ImgPreview" style="object-fit: contain;" style="width: 100%" />
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Shtoni" class="btn btn-primary" />
+    </div>
+</form>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function ImgPre(input) {
+        if (input.files[0]) {
+            var uploadimg = new FileReader();
+            uploadimg.onload = function (displayimg) {
+                $("#ImgPreview").attr('src', displayimg.target.result);
+            }
+            uploadimg.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
